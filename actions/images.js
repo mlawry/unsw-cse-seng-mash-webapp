@@ -20,7 +20,7 @@ function action(response, requestSearch, requestHash) {
 		response.end();
 		return;
 	}
-	var filePath = "./data/" + fileName;
+	var filePath = "./data/img/" + fileName;
 	
 	fs.readFile(filePath, function(err, buffer) {
 		if (err) {

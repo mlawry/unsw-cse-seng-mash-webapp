@@ -1,36 +1,14 @@
-function isGoodPathname(pathname) {
-	var allowedChars = [
-		'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s',
-		't','u','v','w','x','y','z','/','0','1','2','3','4','5','6','7','8','9'];
-	
-	// Returns true if ch is not any one of the allowed characters.
-	var isCharNotInAllowed = function (ch) {
-		// See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
-		return allowedChars.every(function (value) {
-			return (ch !== value);
-		});
-	};
-	
-	if (typeof pathname === "string") {
-		for (var i = 0; i < pathname.length; ++i) {
-			var ch = pathname.charAt(i);
-			if (isCharNotInAllowed(ch)) {
-				// ch is an invalid character.
-				return false;
-			}
-		}
-		// Getting here means all characters are allowed.
-		return true;
-	}
-	// Pathname is not a string, so that's not valid either.
-	return false;
-}
+var util = require("./util");
+
+var allowedChars = [
+	'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s',
+	't','u','v','w','x','y','z','/','0','1','2','3','4','5','6','7','8','9'];
 
 function route(pathname) {
 	// IMPORTANT SECURITY CONSIDERATION: Prevent hacking with pathnames such as
 	// ../../../etc/passwd, or ../../your/bank/details. We allow only a very
 	// small (but still useful) set of characters in the pathname.
-	if (!isGoodPathname(pathname)) {
+	if (!util.isGoodPathComponent(pathname, allowedChars)) {
 		console.log("WARNING!! Dubious pathname ignored: " + pathname);
 		return null;
 	}
