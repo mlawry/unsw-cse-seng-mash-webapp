@@ -4,7 +4,7 @@ var fs = require('fs');
 // You must call response.end() when done to let HTTP server know the response is completed.
 function action(response, requestSearch, requestHash) {
 	var fileName;
-	switch (requestSearch) {
+	switch (requestSearch.substring(0, 2)) {
 	case "?1":
 		fileName = "1.png";
 		break;

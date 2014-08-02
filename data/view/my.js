@@ -17,13 +17,34 @@ function showImage(strSelector, imageHref) {
 		.attr("height", "100%");
 }
 
+function validateAndShow(strSelector, imageHref) {
+	function onSuccess() {
+		// Don't care what server returns, just that the ajax request was successful.
+		showImage(strSelector, imageHref);
+	}
+	
+	function onError() {
+		// Server probably returned 404 error, so no image available.
+		alert("There are no more images to be shown.");
+	}
+	
+	// Use ajax to determine if imageHref actually exists.
+	// See http://api.jquery.com/jQuery.ajax/
+	$.ajax({
+		url: imageHref,
+		cache: false,
+		success: onSuccess,
+		error: onError
+	});
+}
+
 function doNext(strSelector) {
 	var imageIndex = $(strSelector).data("imageIndex");
 	imageIndex = 1 + imageIndex;
 	$(strSelector).data("imageIndex", imageIndex);
 	
 	var imageHref = "/images?" + imageIndex;
-	showImage(strSelector, imageHref);
+	validateAndShow(strSelector, imageHref);
 }
 
 function doPrev(strSelector) {
@@ -32,5 +53,5 @@ function doPrev(strSelector) {
 	$(strSelector).data("imageIndex", imageIndex);
 	
 	var imageHref = "/images?" + imageIndex;
-	showImage(strSelector, imageHref);
+	validateAndShow(strSelector, imageHref);
 }
