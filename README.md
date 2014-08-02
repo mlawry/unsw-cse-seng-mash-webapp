@@ -33,7 +33,7 @@ from http://nodejs.org/
     + *cd /home/user/unsw-cse-seng-mash-webapp*
     + *../bin/node index.js*
 
-+ Navigate your favourite Web browser to http://localhost:8080/
++ Navigate your favourite Web browser to http://localhost:8080/pages?main.html
 
 + Type Ctrl-C in Terminal to quit the server.
 
