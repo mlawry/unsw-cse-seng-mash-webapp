@@ -27,10 +27,10 @@ from http://nodejs.org/
 + Unzip the downloaded file to (say) */home/user/node-v0.10.29-linux-x86*
 
 + Clone this repository (or download a ZIP of it, then unzip) to
-*/home/user/unsw-cse-seng-mash-webapp*
+*/home/user/node-v0.10.29-linux-x86/unsw-cse-seng-mash-webapp*
 
 + In a terminal, type the following commands.
-    + *cd /home/user/unsw-cse-seng-mash-webapp*
+    + *cd /home/user/node-v0.10.29-linux-x86/unsw-cse-seng-mash-webapp*
     + *../bin/node index.js*
 
 + Navigate your favourite Web browser to http://localhost:8080/pages?main.html
